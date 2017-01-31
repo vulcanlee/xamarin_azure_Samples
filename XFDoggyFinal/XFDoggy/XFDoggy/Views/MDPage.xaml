@@ -6,41 +6,43 @@
                   prism:ViewModelLocator.AutowireViewModel="True"
                   x:Class="XFDoggy.Views.MDPage">
 
-    <MasterDetailPage.Master>
-        <ContentPage Title="Main">
+    <MasterDetailPage.Resources>
+        <!--透過資源字典的使用，可以簡化XAML的設定內容，並且讓 XAML 維護上變得更有彈性與方便-->
+        <ResourceDictionary>
+            <!--這裡定義一個功能表項目圖示(Font Awesome字體圖示)會用到的樣式定義-->
+            <Style x:Key="MenuItemIconStyle" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="Start" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="FontSize" Value="24" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="Margin" Value="10,0,0,0" />
+            </Style>
+            <!--這裡定義一個功能表項目文字會用到的樣式定義-->
+            <Style x:Key="MenuItemLevel1Style" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="Start" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="Margin" Value="10,0,0,0" />
+            </Style>
+            <!--這裡定義一個功能表項目會用到的半面配置樣式定義-->
+            <Style x:Key="MenuItemStackLayoutStyle" TargetType="StackLayout">
+                <Setter Property="Orientation" Value="Horizontal" />
+                <Setter Property="Margin" Value="0,15" />
+            </Style>
+        </ResourceDictionary>
+    </MasterDetailPage.Resources>
 
-            <ContentPage.Resources>
-                <ResourceDictionary>
-                    <Style x:Key="MenuItemIconStyle" TargetType="Label">
-                        <Setter Property="HorizontalOptions" Value="Start" />
-                        <Setter Property="VerticalOptions" Value="Center" />
-                        <Setter Property="FontSize" Value="24" />
-                        <Setter Property="TextColor" Value="Black" />
-                        <Setter Property="Margin" Value="10,0,0,0" />
-                    </Style>
-                    <Style x:Key="MenuItemLevel1Style" TargetType="Label">
-                        <Setter Property="HorizontalOptions" Value="Start" />
-                        <Setter Property="VerticalOptions" Value="Center" />
-                        <Setter Property="FontSize" Value="24" />
-                        <Setter Property="TextColor" Value="Black" />
-                        <Setter Property="Margin" Value="10,0,0,0" />
-                    </Style>
-                    <Style x:Key="MenuItemLevel2Style" TargetType="Label">
-                        <Setter Property="HorizontalOptions" Value="Start" />
-                        <Setter Property="VerticalOptions" Value="Center" />
-                        <Setter Property="FontSize" Value="Large" />
-                        <Setter Property="TextColor" Value="White" />
-                        <Setter Property="Margin" Value="60,10,0,0" />
-                    </Style>
-                </ResourceDictionary>
-            </ContentPage.Resources>
-            
+    <MasterDetailPage.Master>
+        <!--這裡定義了彈出式導航抽屜面板的樣貌-->
+        <ContentPage Title="Main">
             <StackLayout
                 Orientation="Vertical" BackgroundColor="#FFDBB5"
                 VerticalOptions="FillAndExpand"
                 Spacing="0"
                 >
 
+                <!--這裡定義了導航抽屜的最上方的公司識別圖示與名稱-->
                 <Grid
                     RowSpacing="0" ColumnSpacing="0"
                     >
@@ -87,19 +89,22 @@
                     </Image>
 
                     <Label
-                        Text="多奇數位創意有限公司" TextColor="White" FontSize="28" FontAttributes="Bold"
+                        Text="多奇數位創意有限公司" TextColor="#BBFFFFFF" FontSize="28" FontAttributes="Bold"
                         HorizontalOptions="Start" VerticalOptions="End"
                         Margin="15,0,0,15"
                         />
                 </Grid>
+        
+                <!--這裡定義了每個功能表的項目與相關手勢操作命令綁定-->
                 <ScrollView
                     Margin="30,30,30,0"
                     Orientation="Vertical">
                     <StackLayout
                         Orientation="Vertical">
+
+                        <!--差旅費用申請-->
                         <StackLayout
-                            Orientation="Horizontal"
-                            Margin="0,10">
+                            Style="{StaticResource MenuItemStackLayoutStyle}">
                             <localControls:FontAwesomeLabel 
                                 Text="&#xf072;"
                                 Style="{StaticResource MenuItemIconStyle}"
@@ -117,9 +122,9 @@
                             </Label>
                         </StackLayout>
 
+                        <!--我要請假-->
                         <StackLayout
-                            Orientation="Horizontal"
-                            Margin="0,10">
+                            Style="{StaticResource MenuItemStackLayoutStyle}">
                             <localControls:FontAwesomeLabel 
                                 Text="&#xf0f8;"
                                 Style="{StaticResource MenuItemIconStyle}"
@@ -137,9 +142,9 @@
                             </Label>
                         </StackLayout>
 
+                        <!--填寫工作日報表-->
                         <StackLayout
-                            Orientation="Horizontal"
-                            Margin="0,10">
+                            Style="{StaticResource MenuItemStackLayoutStyle}">
                             <localControls:FontAwesomeLabel 
                                 Text="&#xf03a;"
                                 Style="{StaticResource MenuItemIconStyle}"
@@ -157,9 +162,9 @@
                             </Label>
                         </StackLayout>
 
+                        <!--最新消息-->
                         <StackLayout
-                            Orientation="Horizontal"
-                            Margin="0,10">
+                            Style="{StaticResource MenuItemStackLayoutStyle}">
                             <localControls:FontAwesomeLabel 
                                 Text="&#xf1ea;"
                                 Style="{StaticResource MenuItemIconStyle}"
@@ -177,9 +182,9 @@
                             </Label>
                         </StackLayout>
 
+                        <!--登出-->
                         <StackLayout
-                            Orientation="Horizontal"
-                            Margin="0,10">
+                            Style="{StaticResource MenuItemStackLayoutStyle}">
                             <localControls:FontAwesomeLabel 
                                 Text="&#xf08b;"
                                 Style="{StaticResource MenuItemIconStyle}"
@@ -196,6 +201,7 @@
                                 </Label.GestureRecognizers>
                             </Label>
                         </StackLayout>
+                
                     </StackLayout>
                 </ScrollView>
 

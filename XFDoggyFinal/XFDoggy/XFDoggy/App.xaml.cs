@@ -19,6 +19,10 @@ namespace XFDoggy
             Container.RegisterTypeForNavigation<MainPage>();
             Container.RegisterTypeForNavigation<NaviPage>();
             Container.RegisterTypeForNavigation<MDPage>();
+            Container.RegisterTypeForNavigation<差旅費用申請HomePage>();
+            Container.RegisterTypeForNavigation<我要請假HomePage>();
+            Container.RegisterTypeForNavigation<填寫工作日報表HomePage>();
+            Container.RegisterTypeForNavigation<最新消息HomePage>();
         }
     }
 }
